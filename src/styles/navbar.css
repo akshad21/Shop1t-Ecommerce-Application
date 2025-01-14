@@ -1,0 +1,202 @@
+ /* General Styles */
+ .body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar-upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background: #ffffff;
+    position: relative;
+  }
+  
+  .navbar-search input {
+    padding: 5px;
+    border-radius: 4px;
+    border: 0px solid #ccc;
+    width: 200px;
+  }
+  
+  .navbar-center-text {
+    color: black;
+    font-size: 18px;
+  }
+  
+  .navbar-login button {
+    background-color: #ff5722;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .navbar-login button:hover {
+    background-color: #e64a19;
+  }
+  
+  .hamburger-menu {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Lower Half of Navbar */
+  .navbar-lower {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #423c39;
+    padding: 10px;
+    background-color: #423c39;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+  
+  .navbar-links a:hover {
+    background-color: #ff5722;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar-website-name .website-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar-website-name .website-name:hover {
+    color: #ff5722;
+  }
+  
+  .navbar-wishlist-cart {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .wishlist {
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.375rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .wishlist:hover {
+    background-color: #ea580c; /* Tailwind orange-600 */
+  }
+  
+  
+  .navbar-wishlist-cart a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-wishlist-cart a:hover {
+    background-color: #ff5722;
+    border-radius: 4px;
+  }
+
+  .cart{
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.375rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+
+  .cart:hover {
+    background-color: #ea580c; /* Tailwind orange-600 */
+  }
+  
+
+  /* General styles for the Compare button */
+.compare {
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.compare:hover {
+  background-color: #ea580c; /* Tailwind orange-600 */
+}
+
+
+  
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .hamburger-menu {
+      display: block;
+    }
+  
+    .navbar-lower {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      display: none; /* Hidden by default */
+    }
+  
+    .navbar-lower.menu-open {
+      display: flex; /* Show when menu is open */
+    }
+  
+    .navbar-lower.menu-closed {
+      display: none; /* Hide when menu is closed */
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .navbar-lower a {
+      padding: 10px 0;
+      width: 100%;
+      text-align: left;
+    }
+  
+    .navbar-lower .navbar-website-name {
+      margin: 10px 0;
+    }
+  
+    .navbar-wishlist-cart {
+      flex-direction: column;
+      gap: 10px;
+    }
+  } 
+
+  
+  
