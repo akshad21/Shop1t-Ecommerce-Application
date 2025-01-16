@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { GrPowerReset } from "react-icons/gr";
 
 const FilterComponent = ({
@@ -24,9 +24,9 @@ const FilterComponent = ({
   };
 
   return (
-    <div className="flex flex-wrap justify-between items-center bg-gray-50 shadow-md rounded-lg p-6 max-w-screen-xl mx-auto mb-6">
+    <div className="flex flex-wrap justify-between items-center bg-gray-50 shadow-md rounded-lg p-6 max-w-screen-xl mx-auto mb-6 space-y-4 sm:space-y-0">
       {/* Sorting Dropdown */}
-      <div className="w-full sm:w-auto mb-4 sm:mb-0">
+      <div className="w-full sm:w-auto mb-4 sm:mb-0 flex-1 min-w-[200px]">
         <label
           htmlFor="sortOrder"
           className="block text-sm font-medium text-gray-700 mb-2"
@@ -37,7 +37,7 @@ const FilterComponent = ({
           id="sortOrder"
           onChange={(e) => setSortOrder(e.target.value)}
           value={sortOrder}
-          className="w-full sm:w-auto border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
+          className="w-full border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
         >
           <option value="">Select</option>
           <option value="low-to-high">Price: Low to High</option>
@@ -46,9 +46,10 @@ const FilterComponent = ({
       </div>
 
       {/* Price Range Filter */}
-      <div className="flex flex-wrap items-center space-x-4">
-        <span className="text-sm font-medium text-gray-700">Price Range:</span>
-
+      <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
+          Price Range:
+        </span>
         <div className="flex items-center space-x-2">
           <input
             type="number"
@@ -57,7 +58,7 @@ const FilterComponent = ({
             placeholder="Min"
             value={priceRange[0] === 0 ? "" : priceRange[0]}
             onChange={handleMinPriceChange}
-            className="border rounded-lg p-3 w-28 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
+            className="border rounded-lg p-3 w-full sm:w-28 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
           />
           <span className="text-gray-500">-</span>
           <input
@@ -67,14 +68,14 @@ const FilterComponent = ({
             placeholder="Max"
             value={priceRange[1] === 0 ? "" : priceRange[1]}
             onChange={handleMaxPriceChange}
-            className="border rounded-lg p-3 w-28 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
+            className="border rounded-lg p-3 w-full sm:w-28 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
           />
           {/* Reset Button */}
           <button
             onClick={handleReset}
-            className="px-2 py-2 bg-[#ff5722] text-white rounded-[50%] hover:bg-orange-600 transition duration-200 ease-in-out"
+            className="p-2 bg-[#ff5722] text-white rounded-full hover:bg-orange-600 transition duration-200 ease-in-out flex items-center justify-center"
           >
-            <GrPowerReset style={{fontSize:"23px"}}/>
+            <GrPowerReset style={{ fontSize: "20px" }} />
           </button>
         </div>
       </div>

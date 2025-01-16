@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
-import { FaCartShopping } from "react-icons/fa6";
 import { CartContext } from "../context/cart_context"; // Adjust the path as needed
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+
 
 const CompareTable = ({ compareProducts, removeFromCompare }) => {
   const { addToCart } = useContext(CartContext);

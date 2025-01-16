@@ -11,7 +11,9 @@ import { CartContext } from "../context/cart_context"; // Import CartContext to 
 // Function to fetch products based on the search query
 const fetchProducts = async (query) => {
   if (!query) return []; // If no query, return an empty array
-  const response = await fetch(`https://dummyjson.com/products/search?q=${query}`);
+  const response = await fetch(
+    `https://dummyjson.com/products/search?q=${query}`
+  );
   const data = await response.json();
   return data.products || []; // Return the products from the response
 };
@@ -27,7 +29,7 @@ const NavBar = () => {
   const searchRef = useRef(null); // Reference to the search input container
 
   // Use CartContext to access cart and wishlist information
-  const { cart, wishlist,compareProducts } = useContext(CartContext);
+  const { cart, wishlist, compareProducts } = useContext(CartContext);
 
   // Function to toggle menu visibility on mobile
   const toggleMenu = () => {
@@ -56,7 +58,10 @@ const NavBar = () => {
   };
 
   // Calculate the total quantity of items in the cart
-  const totalCartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalCartQuantity = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   // Effect hook to perform debounced search functionality
   useEffect(() => {
@@ -105,7 +110,8 @@ const NavBar = () => {
               setSearchExecuted(false); // Allow the dropdown to show again after the user starts typing
             }}
             onKeyDown={(e) => {
-              if (e.key === "Enter" && searchQuery.trim()) { // Check if "Enter" key is pressed and there is input
+              if (e.key === "Enter" && searchQuery.trim()) {
+                // Check if "Enter" key is pressed and there is input
                 handleSearch(); // Trigger the search function
               }
             }}
@@ -124,7 +130,11 @@ const NavBar = () => {
                 <div className="text-center p-4">Loading...</div> // Show loading text while fetching data
               ) : (
                 searchResults.slice(0, 5).map((product) => (
-                  <Link key={product.id} href={`/products/${product.id}`} passHref>
+                  <Link
+                    key={product.id}
+                    href={`/products/${product.id}`}
+                    passHref
+                  >
                     <div className="p-4 cursor-pointer hover:bg-[#ff5722] flex items-center transition-colors duration-300 rounded-lg">
                       {/* Product Image */}
                       <img
@@ -134,9 +144,13 @@ const NavBar = () => {
                       />
                       <div className="flex flex-col">
                         {/* Product Title */}
-                        <span className="text-black font-medium text-sm">{product.title}</span>
+                        <span className="text-black font-medium text-sm">
+                          {product.title}
+                        </span>
                         {/* Product Price */}
-                        <span className="text-sm text-gray-600">{product.price}$</span>
+                        <span className="text-sm text-gray-600">
+                          {product.price}$
+                        </span>
                       </div>
                     </div>
                   </Link>
@@ -163,7 +177,9 @@ const NavBar = () => {
 
       {/* Lower Half of Navbar */}
       <div
-        className={`flex justify-between items-center border-t-2 p-4 bg-[#423c39] ${menuOpen ? "flex-col gap-6" : "gap-4"} lg:flex-row transition-all duration-300 ease-in-out`}
+        className={`flex justify-between items-center border-t-2 p-4 bg-[#423c39] ${
+          menuOpen ? "flex-col gap-6" : "gap-4"
+        } lg:flex-row transition-all duration-300 ease-in-out`}
       >
         {/* Website Name - Centered when the menu is open */}
         <div
@@ -187,7 +203,9 @@ const NavBar = () => {
 
         {/* Menu Links and Icons - Hidden on Mobile until clicked */}
         <div
-          className={`flex gap-6 lg:flex ${menuOpen ? "flex-col gap-6" : "hidden"} transition-all duration-300 ease-in-out`}
+          className={`flex gap-6 lg:flex ${
+            menuOpen ? "flex-col gap-6" : "hidden"
+          } transition-all duration-300 ease-in-out`}
         >
           <Link href="">
             <span className="text-white text-sm px-4 py-2 rounded-md hover:bg-[#ff5722] transition duration-300">
@@ -213,49 +231,51 @@ const NavBar = () => {
 
         {/* Icons - Hidden on Mobile until clicked */}
         <div
-          className={`flex gap-4 lg:flex ${menuOpen ? "flex-col gap-6" : "hidden"} transition-all duration-300 ease-in-out`}
-        >
-          <button
-            className="bg-transparent text-white p-2 rounded-md hover:bg-[#ff5722] transition duration-300"
-            onClick={goToCompare} // Navigate to compare page
-            aria-label="Go to Compare"
-          >
-            <FaBalanceScale style={{ fontSize: "23px" }} />
-            {compareProducts.length > 0 && (
-              <span className="absolute top-[74px] right-[123px]  text-xs text-white bg-[#ff5722] rounded-full px-1">
-                {compareProducts.length} {/* Show number of wishlist items */}
-              </span>
-            )}
-          </button>
+  className={`flex ${
+    menuOpen ? "flex-row justify-evenly gap-8" : "hidden"
+  } lg:flex gap-4 transition-all duration-300 ease-in-out`}
+>
+  <button
+    className="bg-transparent text-white p-2 rounded-md hover:text-[#ff5722] transition duration-300 relative"
+    onClick={goToCompare}
+    aria-label="Go to Compare"
+  >
+    <FaBalanceScale style={{ fontSize: "23px" }} />
+    {compareProducts.length > 0 && (
+      <span className="absolute top-[0px] right-[-2px] text-xs text-white bg-[#ff5722] rounded-full px-1">
+        {compareProducts.length}
+      </span>
+    )}
+  </button>
 
-          {/* Wishlist Button with quantity */}
-          <button
-            className="bg-transparent text-white p-2 rounded-md hover:bg-[#ff5722] transition duration-300 relative"
-            onClick={goToWishlist} // Navigate to wishlist page
-            aria-label="Go to Wishlist"
-          >
-            <FaHeart style={{ fontSize: "23px" }} />
-            {wishlist.length > 0 && (
-              <span className="absolute top-0 left-[26px]  text-xs text-white bg-[#ff5722] rounded-full px-1">
-                {wishlist.length} {/* Show number of wishlist items */}
-              </span>
-            )}
-          </button>
+  <button
+    className="bg-transparent text-white p-2 rounded-md hover:text-[#ff5722] transition duration-300 relative"
+    onClick={goToWishlist}
+    aria-label="Go to Wishlist"
+  >
+    <FaHeart style={{ fontSize: "23px" }} />
+    {wishlist.length > 0 && (
+      <span className="absolute top-0 left-[26px]  text-xs text-white bg-[#ff5722] rounded-full px-1">
+        {wishlist.length}
+      </span>
+    )}
+  </button>
 
-          {/* Cart Button with total quantity */}
-          <button
-            className="bg-transparent text-white p-2 rounded-md hover:bg-[#ff5722] transition duration-300 relative"
-            onClick={goToCart} // Navigate to cart page
-            aria-label="Go to Cart"
-          >
-            <IoBagHandleSharp style={{ fontSize: "23px" }} />
-            {totalCartQuantity > 0 && (
-              <span className="absolute top-0 right-0 text-xs text-white bg-[#ff5722] rounded-full px-1">
-                {totalCartQuantity} {/* Show total items in the cart */}
-              </span>
-            )}
-          </button>
-        </div>
+  <button
+    className="bg-transparent text-white p-2 rounded-md hover:text-[#ff5722] transition duration-300 relative"
+    onClick={goToCart}
+    aria-label="Go to Cart"
+  >
+    <IoBagHandleSharp style={{ fontSize: "23px" }} />
+    {totalCartQuantity > 0 && (
+      <span className="absolute top-0 right-0 text-xs text-white bg-[#ff5722] rounded-full px-1">
+        {totalCartQuantity}
+      </span>
+    )}
+  </button>
+</div>
+
+
       </div>
     </div>
   );

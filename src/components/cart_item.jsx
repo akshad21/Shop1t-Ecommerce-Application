@@ -3,6 +3,7 @@ import { CartContext } from "../context/cart_context";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify"; // Import toast
 import Link from "next/link";
+import Image from "next/image"; // Import Next.js Image component
 
 const CartItem = ({ item }) => {
   const { updateQuantity, removeFromCart } = useContext(CartContext);
@@ -35,14 +36,14 @@ const CartItem = ({ item }) => {
   return (
     <div className="flex items-center justify-between border p-4 rounded-lg">
       <div className="flex items-center gap-4">
-      
-        <img
+        {/* Updated Image tag */}
+        <Image
           src={item.images[0] || "/default-image.png"}
           alt={item.title}
-          className="w-16 h-16 object-contain"
+          width={64} // Adjust width
+          height={64} // Adjust height
+          className="object-contain"
         />
-        
-        
         <div>
           <h3 className="font-semibold">{item.title}</h3>
           <span className="text-gray-500">${item.price}</span>

@@ -124,7 +124,7 @@ const Home = ({ categories }) => {
           <p className="text-lg md:text-[18px] mb-[20px]">
             Your one-stop shop for the best products.
           </p>
-          <Link href="">
+          <Link href="/product_list">
             <button className="bg-[#423C39] hover:bg-[#ff5722] text-white font-[18px] py-[15px] px-[30px] rounded-[8px] transition">
               Shop Now
             </button>
