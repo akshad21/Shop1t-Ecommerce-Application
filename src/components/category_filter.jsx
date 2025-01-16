@@ -54,20 +54,29 @@ const CategoryFilter = ({ categories, onFilterChange }) => {
 
   // Determine background color based on the current pathname
   const bgColor = router.pathname === "/" ? "bg-gray-200" : "bg-white";
+
+  const length = router.pathname === "/product_list" ? "max-w-screen-xl mx-auto" : "null";
+
+  const margin = router.pathname === "/product_list" ? " mx-auto" : "null";
+
+  const padding = router.pathname === "/" ? "py-1" : "py-2";
   
 
   return (
-    <div className="category-filter rounded-md shadow-md transition-all duration-300">
+    <div className={`category-filter  rounded-b-lg ${length}shadow-md ${margin} transition-all duration-300`}>
       <button
-        className={`w-full text-left font-bold py-1 px-3 ${bgColor} shadow-lg rounded-md flex justify-between items-center text-sm`}
-        onClick={handleToggle}
-      >
-        <span>Filter Categories</span>
-        <span>{isOpen ? "▲" : "▼"}</span>
-      </button>
+  className={`w-full  text-left font-bold ${padding} px-6 ${bgColor} shadow-lg ${
+    isOpen ? "null" : "rounded-b-md"
+  } flex justify-between items-center text-sm`}
+  onClick={handleToggle}
+>
+  <span>Filter Categories</span>
+  <span>{isOpen ? "▲" : "▼"}</span>
+</button>
+
 
       {isOpen && (
-        <div className="p-2 bg-gray-50 rounded-lg">
+        <div className="p-2 bg-gray-50 rounded-b-lg">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
               <div key={category.slug || category.name} className="flex items-center gap-2">
