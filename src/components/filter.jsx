@@ -24,9 +24,9 @@ const FilterComponent = ({
   };
 
   return (
-    <div className="flex flex-wrap justify-between items-center bg-gray-50 shadow-md rounded-lg p-6 max-w-screen-xl mx-auto mb-6 space-y-4 sm:space-y-0">
+    <div className="flex flex-wrap sm:flex-nowrap justify-between items-center bg-gray-50 shadow-md rounded-lg p-6 max-w-screen-xl mx-auto mb-6 gap-4">
       {/* Sorting Dropdown */}
-      <div className="w-full sm:w-auto mb-4 sm:mb-0 flex-1 min-w-[200px]">
+      <div className="flex-1 min-w-[200px]">
         <label
           htmlFor="sortOrder"
           className="block text-sm font-medium text-gray-700 mb-2"
@@ -46,11 +46,11 @@ const FilterComponent = ({
       </div>
 
       {/* Price Range Filter */}
-      <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
+      <div className="flex-1 min-w-[280px]">
+        <span className="block text-sm font-medium text-gray-700 mb-2">
           Price Range:
         </span>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <input
             type="number"
             min="0"
@@ -58,7 +58,7 @@ const FilterComponent = ({
             placeholder="Min"
             value={priceRange[0] === 0 ? "" : priceRange[0]}
             onChange={handleMinPriceChange}
-            className="border rounded-lg p-3 w-full sm:w-28 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
+            className="flex-1 border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
           />
           <span className="text-gray-500">-</span>
           <input
@@ -68,7 +68,7 @@ const FilterComponent = ({
             placeholder="Max"
             value={priceRange[1] === 0 ? "" : priceRange[1]}
             onChange={handleMaxPriceChange}
-            className="border rounded-lg p-3 w-full sm:w-28 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
+            className="flex-1 border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
           />
           {/* Reset Button */}
           <button
