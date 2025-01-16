@@ -24,7 +24,7 @@ const FilterComponent = ({
   };
 
   return (
-    <div className="flex flex-wrap sm:flex-nowrap justify-between items-center bg-gray-50 shadow-md rounded-lg p-6 max-w-screen-xl mx-auto mb-6 gap-4">
+    <div className="flex flex-wrap sm:flex-nowrap justify-between items-center bg-gray-50 shadow-md rounded-t-lg p-6 max-w-screen-xl mx-auto mb-0 gap-4">
       {/* Sorting Dropdown */}
       <div className="flex-1 min-w-[200px]">
         <label
