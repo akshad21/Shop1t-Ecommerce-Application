@@ -129,7 +129,7 @@ const NavBar = () => {
               {isLoading ? (
                 <div className="text-center p-4">Loading...</div> // Show loading text while fetching data
               ) : (
-                searchResults.slice(0, 5).map((product) => (
+                searchResults.slice(0, 10).map((product) => (
                   <Link
                     key={product.id}
                     href={`/products/${product.id}`}
@@ -140,7 +140,7 @@ const NavBar = () => {
                       <img
                         src={product.images[0]}
                         alt={product.title}
-                        className="w-12 h-12 object-cover rounded-lg mr-4"
+                        className="w-12 h-12 object-contain rounded-lg mr-4"
                       />
                       <div className="flex flex-col">
                         {/* Product Title */}
