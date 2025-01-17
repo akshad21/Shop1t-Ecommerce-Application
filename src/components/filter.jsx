@@ -1,5 +1,8 @@
 import React from "react";
 import { GrPowerReset } from "react-icons/gr";
+import { useRouter } from "next/router";
+
+
 
 const FilterComponent = ({
   sortOrder,
@@ -8,6 +11,7 @@ const FilterComponent = ({
   setPriceRange,
   maxPrice,
 }) => {
+  const router = useRouter();
   const handleMinPriceChange = (e) => {
     const value = Number(e.target.value);
     setPriceRange([Math.min(value, priceRange[1]), priceRange[1]]);
@@ -23,8 +27,15 @@ const FilterComponent = ({
     setPriceRange([0, maxPrice]); // Reset price range to 0 and maxPrice
   };
 
+  
+
+
+  const margin_b = router.pathname === "/category/[category]" ? "mb-8" : "mb-0";
+
+  const rounded_b = router.pathname === "/category/[category]" ? "rounded-b-lg" : "null";
+
   return (
-    <div className="flex flex-wrap sm:flex-nowrap justify-between items-center bg-gray-50 shadow-md rounded-t-lg p-6 max-w-screen-xl mx-auto mb-0 gap-4">
+    <div className={`flex flex-wrap sm:flex-nowrap justify-between items-center bg-gray-50 shadow-md rounded-t-lg ${rounded_b} p-6 max-w-screen-xl mx-auto ${margin_b} gap-4`}>
       {/* Sorting Dropdown */}
       <div className="flex-1 min-w-[200px]">
         <label
