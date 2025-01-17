@@ -47,38 +47,39 @@ const FilterComponent = ({
 
       {/* Price Range Filter */}
       <div className="flex-1 min-w-[280px]">
-        <span className="block text-sm font-medium text-gray-700 mb-2">
-          Price Range:
-        </span>
-        <div className="flex items-center gap-2">
-          <input
-            type="number"
-            min="0"
-            max={maxPrice}
-            placeholder="Min"
-            value={priceRange[0] === 0 ? "" : priceRange[0]}
-            onChange={handleMinPriceChange}
-            className="flex-1 border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
-          />
-          <span className="text-gray-500">-</span>
-          <input
-            type="number"
-            min="0"
-            max={maxPrice}
-            placeholder="Max"
-            value={priceRange[1] === 0 ? "" : priceRange[1]}
-            onChange={handleMaxPriceChange}
-            className="flex-1 border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
-          />
-          {/* Reset Button */}
-          <button
-            onClick={handleReset}
-            className="p-2 bg-[#ff5722] text-white rounded-full hover:bg-orange-600 transition duration-200 ease-in-out flex items-center justify-center"
-          >
-            <GrPowerReset style={{ fontSize: "20px" }} />
-          </button>
-        </div>
-      </div>
+  <span className="block text-sm font-medium text-gray-700 mb-2">
+    Price Range:
+  </span>
+  <div className="flex flex-wrap items-center gap-2 sm:flex-nowrap">
+    <input
+      type="number"
+      min="0"
+      max={maxPrice}
+      placeholder="Min"
+      value={priceRange[0] === 0 ? "" : priceRange[0]}
+      onChange={handleMinPriceChange}
+      className="flex-1 w-full sm:w-auto border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
+    />
+    <span className="text-gray-500">-</span>
+    <input
+      type="number"
+      min="0"
+      max={maxPrice}
+      placeholder="Max"
+      value={priceRange[1] === 0 ? "" : priceRange[1]}
+      onChange={handleMaxPriceChange}
+      className="flex-1 w-full sm:w-auto border rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-[#ff5722] focus:outline-none transition duration-200 ease-in-out hover:shadow-lg"
+    />
+    {/* Reset Button */}
+    <button
+      onClick={handleReset}
+      className="p-2 bg-[#ff5722] text-white rounded-full hover:bg-orange-600 transition duration-200 ease-in-out flex items-center justify-center"
+    >
+      <GrPowerReset style={{ fontSize: "20px" }} />
+    </button>
+  </div>
+</div>
+
     </div>
   );
 };
