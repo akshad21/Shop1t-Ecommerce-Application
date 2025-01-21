@@ -27,12 +27,6 @@ const FilterComponent = ({
     setPriceRange([0, maxPrice]); // Reset price range to 0 and maxPrice
   };
 
-  //Dynamic bottom margin 
-  const margin_b = router.pathname === "/category/[category]" ? "mb-8" : "mb-0";
-
-  //Dynamic rounded bottom 
-  const rounded_b = router.pathname === "/category/[category]" ? "rounded-b-lg" : "null";
-
   return (
     <div className={`flex flex-wrap sm:flex-nowrap justify-between items-center bg-gray-50 shadow-md rounded-t-lg ${rounded_b} p-6 max-w-screen-xl mx-auto ${margin_b} gap-4`}>
       {/* Sorting Dropdown */}

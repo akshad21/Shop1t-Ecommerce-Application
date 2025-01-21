@@ -10,7 +10,7 @@ const Card = ({ title, imageSrc }) => {
           src={imageSrc}
           alt={title}
           layout="fill"
-          objectFit="contain"
+          objectFit="cover"
           className="group-hover:scale-105 transition-transform duration-300"
         />
       </div>
