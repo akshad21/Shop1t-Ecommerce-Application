@@ -129,7 +129,7 @@ const NavBar = () => {
               {isLoading ? (
                 <div className="text-center p-4">Loading...</div> // Show loading text while fetching data
               ) : (
-                searchResults.slice(0, 5).map((product) => (
+                searchResults.slice(0, 10).map((product) => (
                   <Link
                     key={product.id}
                     href={`/products/${product.id}`}
@@ -140,7 +140,7 @@ const NavBar = () => {
                       <img
                         src={product.images[0]}
                         alt={product.title}
-                        className="w-12 h-12 object-cover rounded-lg mr-4"
+                        className="w-12 h-12 object-contain rounded-lg mr-4"
                       />
                       <div className="flex flex-col">
                         {/* Product Title */}
@@ -161,7 +161,7 @@ const NavBar = () => {
         </div>
 
         {/* Sale Text - Centered on Large Screens */}
-        <div className="flex justify-center items-center w-full lg:w-auto">
+        <div className="flex justify-center  items-center w-full lg:w-auto">
           <div className="text-black text-sm lg:text-lg text-center lg:text-left">
             New Year Sale. Flat 40% Off On All Products!
           </div>
@@ -169,7 +169,7 @@ const NavBar = () => {
 
         {/* Login Button */}
         <div className="flex justify-end w-full lg:w-auto">
-          <button className="bg-[#ff5722] text-white px-4 py-2 rounded-md hover:bg-[#ff5722] text-sm lg:text-base">
+          <button className="bg-[#ff5722] text-white px-4 py-2 rounded-md hover:bg-[#ff4e22] text-sm lg:text-base">
             Login
           </button>
         </div>

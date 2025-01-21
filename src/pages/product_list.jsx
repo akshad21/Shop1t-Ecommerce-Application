@@ -25,7 +25,8 @@ export async function getServerSideProps(context) {
       new Set(products.map((product) => product.category))
     ).map((name) => ({ name, slug: name }));
 
-    // Calculate pagination data
+
+    // Calculate pagination data 
     const totalItems = products.length;
     const startIndex = (page - 1) * itemsPerPage;
     const paginatedProducts = products.slice(startIndex, startIndex + itemsPerPage);
