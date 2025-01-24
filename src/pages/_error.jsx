@@ -10,7 +10,7 @@ const ErrorPage = ({ statusCode }) => {
             <main className="flex-grow flex flex-col items-center justify-center text-center">
                 {/* Animated Title */}
                 <motion.h1
-                    className="text-8xl font-extrabold mb-6"
+                    className="text-8xl font-extrabold mb-7"
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, ease: 'easeInOut' }}
