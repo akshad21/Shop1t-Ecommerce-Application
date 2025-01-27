@@ -125,7 +125,7 @@ const NavBar = () => {
 
           {/* Display Search Results */}
           {searchQuery && !searchExecuted && searchResults.length > 0 && (
-            <div className="absolute left-0 right-0 bg-white border mt-10 shadow-lg max-h-60 overflow-y-auto z-10 rounded-lg transition-all duration-300 w-full lg:w-80">
+            <div className="absolute left-0 right-0 bg-white border mt-10 shadow-lg max-h-60 overflow-y-auto z-10 rounded-lg transition-all duration-300 w-[365px] lg:w-80">
               {isLoading ? (
                 <div className="text-center p-4">Loading...</div> // Show loading text while fetching data
               ) : (
@@ -161,18 +161,19 @@ const NavBar = () => {
         </div>
 
         {/* Sale Text - Centered on Large Screens */}
-        <div className="flex justify-center  items-center w-full lg:w-auto">
-          <div className="text-black text-sm lg:text-lg text-center lg:text-left">
-            New Year Sale. Flat 40% Off On All Products!
-          </div>
-        </div>
+<div className="hidden  lg:flex justify-center items-center w-full lg:w-auto">
+  <div className="text-black text-sm lg:text-lg text-center lg:text-left">
+    New Year Sale. Flat 40% Off On All Products!
+  </div>
+</div>
 
-        {/* Login Button */}
-        <div className="flex justify-end w-full lg:w-auto">
-          <button className="bg-[#ff5722] text-white px-4 py-2 rounded-md hover:bg-[#ff4e22] text-sm lg:text-base">
-            Login
-          </button>
-        </div>
+{/* Login Button */}
+<div className="hidden lg:flex justify-end w-full lg:w-auto">
+  <button className="bg-[#ff5722] text-white px-4 py-2 rounded-md hover:bg-[#ff4e22] text-sm lg:text-base">
+    Login
+  </button>
+</div>
+
       </div>
 
       {/* Lower Half of Navbar */}
