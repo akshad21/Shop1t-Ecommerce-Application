@@ -81,7 +81,7 @@ const DetailedProductCard = ({ product }) => {
             alt={product.title || "Product Image"}
             width={500}
             height={500}
-            className="w-full h-auto max-h-96 object-contain"
+            className="w-full h-auto max-h-[500px] object-contain"
           />
           </TransformComponent>
            </TransformWrapper>
