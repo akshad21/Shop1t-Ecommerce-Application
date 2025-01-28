@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import NavBar from "../../components/navbar";
 import Footer from "../../components/footer";
@@ -6,30 +6,21 @@ import BackButton from "../../components/back_button";
 import DetailedProductCard from "../../components/product_detail_card";
 import { ToastContainer } from "react-toastify";
 
-// Server-side function to fetch product details using the product ID
 export async function getServerSideProps({ params }) {
-  // Extract product ID from the URL parameters
   const { id } = params;
   let product = null;
   let error = null;
 
   try {
-    // Fetch product details from the external API based on the product ID
     const res = await fetch(`https://dummyjson.com/products/${id}`);
-    
-    // If the API response is not okay, throw an error
     if (!res.ok) {
       throw new Error("Product not found.");
     }
-    
-    // If the fetch is successful, parse the product data
     product = await res.json();
   } catch (err) {
-    // If an error occurs during fetching or processing, store an error message
     error = "An error occurred while fetching product details.";
   }
 
-  // Return the product data (or error) as props to the component
   return {
     props: {
       product,
@@ -39,53 +30,76 @@ export async function getServerSideProps({ params }) {
 }
 
 const ProductDetails = ({ product, error }) => {
-  // If there was an error in fetching the product, display an error message
+  const [isLoading, setIsLoading] = useState(true);
+
   if (error) {
     return <div className="text-red-500 text-center">{error}</div>;
   }
 
-  // If no product is found (e.g., empty product object), display a product not found message
   if (!product) {
     return <div className="text-red-500 text-center">Product not found.</div>;
   }
 
+  // Handle image load event to hide the spinner
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
     <>
-      {/* Head component for dynamic meta tags to improve SEO */}
       <Head>
-        {/* Set the page title dynamically based on the product name */}
         <title>{product.name} | Product Details</title>
-        
-        {/* Dynamic meta tags to improve search engine optimization (SEO) */}
         <meta name="description" content={product.description} />
         <meta name="keywords" content={`${product.category}, ${product.name}, online shopping`} />
-        
-        {/* Open Graph meta tags for social media sharing */}
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.image} />
         <meta property="og:url" content={`https://yourwebsite.com/products/${product.id}`} />
       </Head>
 
-      {/* Navigation bar */}
       <NavBar />
-      
-      <div className="container-lg bg-gray-200 mx-auto py-8 px-4">
-        {/* Back button to navigate to the previous page */}
+
+      <div className="container-lg bg-gray-200 mx-auto py-8 px-4 relative">
         <BackButton />
-        
-        {/* ToastContainer for displaying toast notifications (e.g., success or error messages) */}
         <ToastContainer />
-        
-        {/* Detailed product card to display the product's detailed information */}
-        <DetailedProductCard product={product} />
+
+        {/* 3D Cube Spinner */}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-50">
+            <div className="cube-spinner-3d">
+              <div className="cube-face front"></div>
+              <div className="cube-face back"></div>
+              <div className="cube-face left"></div>
+              <div className="cube-face right"></div>
+              <div className="cube-face top"></div>
+              <div className="cube-face bottom"></div>
+            </div>
+          </div>
+        )}
+
+        {/* Product Details */}
+        <div className={`${isLoading ? "opacity-0" : "opacity-100"} transition-opacity duration-500`}>
+          <DetailedProductCard
+            product={{
+              ...product,
+              image: (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="rounded-lg shadow-lg"
+                  onLoad={handleImageLoad} // Call handleImageLoad when the image is fully loaded
+                />
+              ),
+            }}
+          />
+        </div>
       </div>
 
-      {/* Footer section of the page */}
       <Footer />
+
+
     </>
   );
 };
 
-// Export the component as the default export
 export default ProductDetails;
