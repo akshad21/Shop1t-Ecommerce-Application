@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { CartContext } from "../context/cart_context";
 import { toast } from "react-toastify";
 import Image from "next/image"; // Importing Next.js Image component
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
 
 const DetailedProductCard = ({ product }) => {
   const { addToCart, addToWishlist, addToCompare, compareProducts } =
@@ -72,6 +74,8 @@ const DetailedProductCard = ({ product }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left side: Product Image */}
         <div className="flex flex-col items-center">
+          <TransformWrapper>
+        <TransformComponent>
           <Image
             src={currentImage}
             alt={product.title || "Product Image"}
@@ -79,6 +83,8 @@ const DetailedProductCard = ({ product }) => {
             height={500}
             className="w-full h-auto max-h-96 object-contain"
           />
+          </TransformComponent>
+           </TransformWrapper>
 
           {product.images && product.images.length > 1 && (
             <div className="mt-4 flex gap-4 overflow-x-auto">
