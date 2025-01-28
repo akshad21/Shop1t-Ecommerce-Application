@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 import { CartContext } from "../context/cart_context"; // Adjust the path as needed
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 
@@ -13,27 +13,24 @@ const CompareTable = ({ compareProducts, removeFromCompare }) => {
     addToCart(product);
     toast.success(`${product.title} added to cart!`, {
       position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+      autoClose: 1000, // 1 second
+      hideProgressBar: true,
+      closeButton: true,
+      
     });
   };
-
+  
   const handleRemoveFromCompare = (productId) => {
     removeFromCompare(productId);
     toast.info("Product removed from comparison!", {
       position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+      autoClose: 1000, // 1 second
+      hideProgressBar: true,
+      closeButton: true,
+      
     });
   };
+  
 
   if (compareProducts.length === 0) {
     return <div>No products to compare</div>;
@@ -56,7 +53,7 @@ const CompareTable = ({ compareProducts, removeFromCompare }) => {
 
   return (
     <div className="overflow-x-auto">
-      <ToastContainer />
+      
       <table className="min-w-full table-auto bg-white shadow-lg rounded-lg">
         <thead className="bg-gray-300">
           <tr>
