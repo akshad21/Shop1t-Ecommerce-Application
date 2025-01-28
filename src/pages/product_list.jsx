@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import FilterComponent from "../components/filter";
 import CategoryFilter from "../components/category_filter";
 import { motion } from "framer-motion";
+import { ToastContainer } from "react-toastify";
 
 // Fetch data with SSR
 export async function getServerSideProps(context) {
@@ -213,6 +214,7 @@ const ProductList = ({
             </motion.div>
           </div>
         </div>
+        <ToastContainer/>
         <Footer />
       </>
     );
